@@ -1,0 +1,8 @@
+/* main {
+  text-align: center;
+  vertical-align: center;
+  line-height: 100vh
+} */
+.titulo{background-color: Yellow; margin-top:0; text-align: center;}
+.noticia{color: white;text-align: center;}
+.campo{background-color:black;text-align: center; margin-bottom:5%;margin-left:5%;margin-right:5%; width:30%;height:20% ; float:left }
