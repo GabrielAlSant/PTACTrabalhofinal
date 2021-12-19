@@ -1,11 +1,19 @@
 {
   "files": {
+    "package.json": [
+      {
+        "id": "a60a520c-b32e-43bb-9bfd-f189e0d359d2",
+        "line": 9,
+        "version": 1,
+        "index": 154
+      }
+    ],
     "src/components/noticiav.jsx": [
       {
         "id": "622d5e29-98b2-4eb7-b7c7-7710bb313688",
-        "line": 4,
-        "version": 43,
-        "index": 64
+        "line": 1,
+        "version": 202,
+        "index": 12
       }
     ]
   }

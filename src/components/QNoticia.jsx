@@ -1,23 +1,47 @@
-import React from 'react'
-import "./qnoticia.css"
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 
+import { formatDate } from '../services/utils'
+import api from '../services/api'
+import './qnoticia.css'
 
+function QNoticia() {
+	let params = useParams()
 
-export default function QNoticia() {
+	const [noticia, setNoticia] = useState([])
+
+	useEffect(() => {
+		api
+			.get(`/noticias/visualizar?id=${params.idNoticia}`)
+			.then(async response => {
+				let {dataPublicacao, ...rest} = response.data
+				dataPublicacao = await formatDate(dataPublicacao)
+				await setNoticia({dataPublicacao, ...rest})
+			})
+			.catch(err => {
+				console.log('Deu ruim: ', err)
+			})
+	}, [])
+
 	return (
-	
-<div class="row">
-  <div class="col-sm-6">
-    
-      <div class="card-body">
-        <h5 class="card-title">title</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-       </div>
-     
-    </div>
-  </div>
+		<article>
+					<h2 class="titulonoticia">{noticia.titulo}</h2>
+					<h3 class="desc">{noticia.descricao}</h3>			
+			<div class="conteudo">
+				{noticia.conteudo}
+			</div>
 
+      <div class="rodape">
+					<span >{noticia.autor} </span>
+					<span>{noticia.dataPublicacao}</span>
+          <Link to="/">
+				<h4>Voltar ao Menu</h4>        
+			    </Link>
+          
+				</div>
+		</article>
 	)
 }
 
+export default QNoticia
